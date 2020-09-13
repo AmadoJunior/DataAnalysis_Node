@@ -1,16 +1,20 @@
 //Dependencies
 const express = require("express");
 const app = express();
+const cors = require("cors");
 
 //Middleware
+app.use(cors());
 
 //Testing
 app.get("/", (req, res) => {
-    res.send("Home Page");
+    res.status(200).json({
+        message: "Testin Proxy GET"
+    });
 })
 
 //Routes
-const testRoute = require("/api/routes/testRoute.js");
+const testRoute = require("./api/routes/testRoute.js");
 app.use("/api/test", testRoute);
 
 //SPA Production
